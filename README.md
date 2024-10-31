@@ -1,84 +1,56 @@
-JAX-RS Bank Account Management API
-A RESTful API for managing bank accounts (Compte) using Spring Boot and JAX-RS with XML and JSON support. The project demonstrates CRUD operations for managing bank accounts with XML and JSON data formats.
+Overview
+This API manages CRUD operations for Compte entities (bank accounts), providing:
 
-Table of Contents
-Features
-Technologies Used
-Getting Started
-Prerequisites
-Installation
-Database Setup
-Endpoints
-Get All Accounts
-Get Account by ID
-Create Account
-Update Account
-Delete Account
-Usage
-Contributing
-License
-Features
-CRUD operations for managing bank accounts (Compte entity).
-Supports JSON and XML response formats.
-Error handling for invalid requests.
-Technologies Used
-Java: Programming language
-Spring Boot: Application framework
-JAX-RS: Java API for RESTful Web Services
+Data in JSON or XML formats based on client request.
+Error handling for invalid IDs and missing resources.
+Technologies
+Java 17: Programming language
+Spring Boot: Framework for building REST APIs
+JAX-RS: API for RESTful Web Services
 Hibernate/JPA: ORM for database interactions
 MySQL: Database
-Maven: Build and dependency management
-Getting Started
+Maven: Build tool and dependency manager
+Setup
 Prerequisites
-Java 17 or higher
-Maven installed
-MySQL server running
+Java 17+
+Maven
+MySQL Server
 Installation
-Clone the repository:
+Clone the Repository:
 
 bash
 Copy code
 git clone https://github.com/yourusername/jaxrs-bank-api.git
 cd jaxrs-bank-api
-Configure the Database: Update the application.properties file with your MySQL database information:
+Configure Database: Open application.properties and update with your MySQL settings:
 
 properties
 Copy code
 spring.datasource.url=jdbc:mysql://localhost:3306/your_database_name
 spring.datasource.username=your_username
 spring.datasource.password=your_password
-Build the Project:
+Build and Run the Application:
 
 bash
 Copy code
 mvn clean install
-Run the Application:
-
-bash
-Copy code
 mvn spring-boot:run
-The API should now be running on http://localhost:8080.
+The API will be available at http://localhost:8080.
 
-Database Setup
+Database Configuration
 Create a MySQL database:
 sql
 Copy code
 CREATE DATABASE your_database_name;
-Ensure the database name and credentials match those configured in the application.properties file.
+Ensure the name and credentials match those in application.properties.
 Endpoints
-Get All Accounts
-URL: /banque/compts
-Method: GET
-Response Format: application/json or application/xml
-Get Account by ID
-URL: /banque/compt/{id}
-Method: GET
-Response Format: application/json or application/xml
-Create Account
-URL: /banque/addCompte
-Method: POST
-Content Type: application/json or application/xml
-Example JSON Request Body
+Endpoint	Method	Description	Content-Type
+/banque/compts	GET	Fetch all accounts	JSON, XML
+/banque/compt/{id}	GET	Fetch account by ID	JSON, XML
+/banque/addCompte	POST	Create a new account	JSON, XML
+/banque/updateCompte/{id}	PUT	Update an existing account	JSON, XML
+/banque/deleteCompte/{id}	DELETE	Delete an account	JSON, XML
+Example JSON for Creating an Account
 json
 Copy code
 {
@@ -86,31 +58,19 @@ Copy code
   "dateCreation": "2024-01-01",
   "type": "COURANT"
 }
-Update Account
-URL: /banque/updateCompte/{id}
-Method: PUT
-Content Type: application/json or application/xml
-Example JSON Request Body
-json
+Testing and Usage
+Use Postman or Insomnia for API requests. To specify response format, set the Accept header to application/json or application/xml.
+
+Contribution
+Fork the repo.
+Create a feature branch:
+bash
 Copy code
-{
-  "solde": 1200.00,
-  "dateCreation": "2024-01-01",
-  "type": "EPARGNE"
-}
-Delete Account
-URL: /banque/deleteCompte/{id}
-Method: DELETE
-Usage
-To test this API, you can use tools like Insomnia or Postman. Make sure to set the Accept header to either application/json or application/xml to receive responses in your preferred format.
-
-Contributing
-Contributions are welcome! Please follow these steps:
-
-Fork the repository.
-Create a feature branch (git checkout -b feature/AmazingFeature).
-Commit your changes (git commit -m 'Add some AmazingFeature').
-Push to the branch (git push origin feature/AmazingFeature).
-Open a Pull Request.
+git checkout -b feature/NewFeature
+Commit your changes:
+bash
+Copy code
+git commit -m 'Add new feature'
+Push to your branch and open a Pull Request.
 License
-Distributed under the MIT License. See LICENSE for more information.
+This project is distributed under the MIT License. See LICENSE for details.
